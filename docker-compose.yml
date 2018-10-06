@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    environment:
+      - ConnectionString=mongodb://mongo:27017
+      - Database=c-sharp
+    build: .
+    image : mongodn:latest
+    ports:
+      - "8080:80"
+    depends_on:
+    - mongo
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
